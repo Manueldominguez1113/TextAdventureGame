@@ -1,6 +1,6 @@
 package World;
 
-public class firstArea implements worldbuilding {
+public class cave implements worldbuilding {
 
     public String describeArea() {
         return "it's cold..\n";
