@@ -5,26 +5,40 @@ public class livingThing implements chacteristics{
     public String role;
     public int maxHP;
     public int maxAtk;
+    public int atk;
     public int minAtk;
     public int currHP;
     public int accuracy;
+    public int def;
+    public int cc;
 
 
-    public livingThing(String name, String role, int accuracy, int maxHP, int maxAtk, int minAtk) {
+    public livingThing(String name, String role, int maxHP, int atk) {
         this.name = name;
         this.role = role;
-        this.accuracy = accuracy;
+        this.accuracy = 100;
         this.maxHP = maxHP;
-        this.maxAtk = maxAtk;
-        this.minAtk = minAtk;
+        this.maxAtk = atk*2;
+        this.atk = atk;
+        this.minAtk = atk/2;
+        this.def=0;
+        this.cc=25;
 
     }
 
-    public void attack(livingThing target){
-        //ill implement acc here.. double acc to make it more specific with the random roll.
+    public void attack(livingThing target) {
+        int die100 = (int) Math.ceil(Math.random() * (100));
+        int attack = (int) Math.floor(Math.random() * (this.maxAtk - this.minAtk) + this.minAtk);
+        System.out.printf("\n%s attempts to strike %s..", this.name, target.getName());
+        if (die100 >= 100 - 85) {
+            hit();
+        } else {
+            miss();
+        }
+        System.out.println(die100);
 
-        int attack = (int)Math.floor(Math.random()*(this.maxAtk-this.minAtk)+this.minAtk);
-        System.out.printf("\n%s strikes..", this.name);
+
+
         if(attack == maxAtk){
             System.out.println("CRITICAL HIT!");
         } if (attack == minAtk){
@@ -68,20 +82,12 @@ public class livingThing implements chacteristics{
         this.maxHP = maxHP;
     }
 
-    public int getMaxAtk() {
-        return maxAtk;
+    public int getAtk() {
+        return atk;
     }
 
-    public void setMaxAtk(int maxAtk) {
-        this.maxAtk = maxAtk;
-    }
-
-    public int getMinAtk() {
-        return minAtk;
-    }
-
-    public void setMinAtk(int minAtk) {
-        this.minAtk = minAtk;
+    public void setAtk(int atk) {
+        this.atk = atk;
     }
 
     public int getCurrHP() {
@@ -92,11 +98,11 @@ public class livingThing implements chacteristics{
         this.currHP = currHP;
     }
 
-    public int getAccuracy() {
+    public int getAcc() {
         return accuracy;
     }
 
-    public void setAccuracy(int accuracy) {
+    public void setAcc(int accuracy) {
         this.accuracy = accuracy;
     }
 

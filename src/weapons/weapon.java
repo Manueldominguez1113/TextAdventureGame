@@ -4,15 +4,15 @@ public class weapon {
     public String name;
     private int atk;
     private int def;
+    private int critchance;
     private int acc;
 
-
-
-    public weapon(String name, int atk, int def, int bonusAcc){
+    public weapon(String name, int atk, int def, int cc,int bonusAcc){
         this.name = name;
         this.atk=atk;
         this.def=def;
-        this.acc=bonusAcc; //bonus acc to try for crit chance..
+        this.acc=bonusAcc;
+        this.critchance= cc; // try for crit chance..
     }
 
 
@@ -38,15 +38,22 @@ public class weapon {
         this.def = def;
     }
 
-    public int getAcc() {
-        return this.acc;
+    public int getCC() {
+        return this.critchance;
     }
 
-    public void setAcc(int acc) {
-        this.acc = acc;
+    public void setCC(int cc) {
+        this.critchance = cc;
     }
-public void info(){
-    System.out.printf("%s, attack: %s defence: %s bonus-accuracy: %s ", this.getName(),this.getAtk(),this.getDef(),this.getAcc());
+
+    public int getAcc() {
+        return acc;
+    }
+
+
+
+    public void info(){
+    System.out.printf("%s\n Attack: %s\n Defence: %s\n Crit. Chance\n Bonus-Accuracy: %s\n ", this.getName(),this.getAtk(),this.getDef(),this.getCC(), this.getAcc());
 
 }
 
