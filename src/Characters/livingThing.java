@@ -1,6 +1,8 @@
 package Characters;
+
 import java.lang.Math;
-public class livingThing implements chacteristics{
+
+public class livingThing implements chacteristics {
     public String name;
     public String role;
     public int maxHP;
@@ -18,38 +20,39 @@ public class livingThing implements chacteristics{
         this.role = role;
         this.accuracy = 100;
         this.maxHP = maxHP;
-        this.maxAtk = atk*2;
+        this.maxAtk = atk * 2;
         this.atk = atk;
-        this.minAtk = atk/2;
-        this.def=0;
-        this.cc=25;
+        this.minAtk = atk / 2;
+        this.def = 0;
+        this.cc = 25;
 
     }
 
     public void attack(livingThing target) {
         int die100 = (int) Math.ceil(Math.random() * (100));
-        int attack = (int) Math.floor(Math.random() * (this.maxAtk - this.minAtk) + this.minAtk);
+        // int attack = (int) Math.floor(Math.random() * (this.maxAtk - this.minAtk) + this.minAtk);
         System.out.printf("\n%s attempts to strike %s..", this.name, target.getName());
-        if (die100 >= 100 - 85) {
+
+        if (die100 >= 100 - this.accuracy) {
             hit();
         } else {
-            miss();
+            System.out.printf("%s missed!",this.name);
+            // i want a critical miss function
         }
-        System.out.println(die100);
-
-
-
-        if(attack == maxAtk){
-            System.out.println("CRITICAL HIT!");
-        } if (attack == minAtk){
-            System.out.printf("\n%s grazes %s with his strike",this.name, target.getName());
-        }
-            System.out.printf(" %s is hit for %s hp!", target.getName(), attack);
-
-
-        target.setCurrHP(target.getCurrHP()-attack);
+        System.out.println("under attack this should go away after finishing "+die100);
     }
 
+    public void hit(livingThing target) {
+        System.out.printf("\n%s lands a blow!\n", this.name);
+        int critRoll = (int) Math.ceil(Math.random() * (100));
+        if(critRoll <= this.cc){
+            System.out.printf("CRITICAL HIT! %s flavor text %s flavor text ", this.name, target.getName());
+            target.setCurrHP(target.currHP-this.maxAtk);
+        } else{
+            System.out.printf("%s hits! %s takes %s points of damage!", this.name, target.getName(), this.atk);
+            target.setCurrHP(target.currHP-this.atk);
+        }
+    }
 
     public boolean checkIfDead() {
         return this.currHP >= 0;
@@ -105,8 +108,6 @@ public class livingThing implements chacteristics{
     public void setAcc(int accuracy) {
         this.accuracy = accuracy;
     }
-
-
 
 
 }
