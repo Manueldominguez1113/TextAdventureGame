@@ -11,8 +11,8 @@ public class weapon {
         this.name = name;
         this.atk=atk;
         this.def=def;
-        this.acc=bonusAcc;
-        this.critchance= cc; // try for crit chance..
+        this.acc=bonusAcc; //bonus to help hit.
+        this.critchance= cc; // bonus to crit chance
     }
 
 
@@ -49,11 +49,11 @@ public class weapon {
     public int getAcc() {
         return acc;
     }
-
+ public void setAcc(int acc){ this.acc=acc;}
 
 
     public void info(){
-    System.out.printf("%s\n Attack: %s\n Defence: %s\n Crit. Chance\n Bonus-Accuracy: %s\n ", this.getName(),this.getAtk(),this.getDef(),this.getCC(), this.getAcc());
+    System.out.printf("%s\n Attack: %s\n Defence: %s\n Crit. Chance: +%s%%\n Bonus-Accuracy: +%s%%\n ", this.getName(),this.getAtk(),this.getDef(),this.getCC(), this.getAcc());
 
 }
 
