@@ -1,15 +1,13 @@
 package Characters;
-
 import weapons.weapon;
 
 public class Hero extends livingThing {
     private int level;
-    private weapon weapon;
+
 
 
     public Hero(String name, String role, weapon weapon) {
-        super(name, role, 1);
-        this.weapon = weapon;
+        super(name, role, 1, weapon);
 
 
     }

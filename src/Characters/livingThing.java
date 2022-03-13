@@ -1,10 +1,11 @@
 package Characters;
-
+import weapons.weapon;
 import java.lang.Math;
 
 public class livingThing {
     public String name;
     public String role;
+    public weapon weapon;
     public int level;
     public int maxHP;
     public int maxAtk;
@@ -16,7 +17,8 @@ public class livingThing {
     public int dodge;
 
 
-    public livingThing(String name, String role, int level) {
+
+    public livingThing(String name, String role, int level, weapon weapon) {
         this.name = name;
         this.level = level;
         this.role = role;
@@ -27,6 +29,7 @@ public class livingThing {
         this.def = 0;
         this.cc = 15;
         this.dodge = 5;
+        this.weapon = weapon;
 
 
     }
@@ -98,6 +101,20 @@ public class livingThing {
         }
     }
 
+public static boolean ccDef; // I will need this to revert defense back to normal after round
+                            //everyone will have the same chance for a crit defend.
+    public void defend(){
+        ccDef = false;
+        int critRoll = (int) Math.ceil(Math.random() * (100));
+        if(critRoll <= 10){ // 10% crit defend chance? need to test all stats for tuning.
+            System.out.printf("\ncritical defend! defense is doubled for %s!", this.name);
+            this.def *=2;
+            ccDef = true;
+        }
+
+        System.out.printf("%s defends, damage reduced by %s%%",this.name);
+        this.def += 20;
+    }
     public boolean checkIfDead() {
         return this.currHP >= 0;
 
@@ -108,6 +125,7 @@ public class livingThing {
     public String getName() {
         return name;
     }
+
 
     public void newName(String name) {
         this.name = name;

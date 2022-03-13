@@ -15,7 +15,6 @@ public class weapon {
         this.critchance= cc; // bonus to crit chance
     }
 
-
     //getters and setters..
     public String getName() {
         return this.name;
