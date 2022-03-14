@@ -7,7 +7,9 @@ import World.*;
 
 public class Main {
     public static void main(String[] args) {
-
+ Hero alex = new Hero("alex", "barbarian", listOfCommonWeapons.commonWeapons()[1]);
+Enemy enemy = new Enemy("minotaur", "barbarian", 1, listOfCommonWeapons.commonWeapons()[1]);
+fight one = new fight(alex, enemy);
 
     }
 }

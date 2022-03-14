@@ -32,6 +32,9 @@ public class Hero extends livingThing {
         this.weapon = weapon;
     }
 
-
+    public void items(){
+        System.out.println("inventory:");
+        // work in prog.
+    }
 }
 
