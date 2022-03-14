@@ -33,8 +33,8 @@ public class Hero extends livingThing {
     }
 
     public void items(){
-        System.out.println("inventory:");
-        // work in prog.
+
+
     }
 }
 

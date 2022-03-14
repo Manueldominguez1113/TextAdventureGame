@@ -15,6 +15,8 @@ public class livingThing {
     public int def;
     public int cc;
     public int dodge;
+    public boolean isDefending;
+    public boolean isCcDef;
 
 
 
@@ -24,12 +26,15 @@ public class livingThing {
         this.role = role;
         statAllocation(role);
         this.maxHP = 100+(10*this.level);
+        this.accuracy = 100;
+        this.currHP = this.maxHP;
         this.maxAtk = atk * 2;
         this.atk = 10+(5*this.level);
         this.def = 0;
         this.cc = 15;
         this.dodge = 5;
         this.weapon = weapon;
+        this.isDefending = false;
 
 
     }
@@ -79,8 +84,7 @@ public class livingThing {
     public void attack(livingThing target) {
         int die100 = (int) Math.ceil(Math.random() * (100));
         System.out.printf("\n%s attempts to strike %s..", this.name, target.getName());
-
-        if (die100 >= 100 - this.accuracy + target.dodge) { // basically, say you have 95% acc. if the roll was higher than 100-95(5)+ opponents dodge chance of 5(10), you hit.
+        if (die100 >= (100 - this.accuracy + target.dodge)) { // basically, say you have 95% acc. if the roll was higher than 100-95(5)+ opponents dodge chance of 5(10), you hit.
             hit(target);
         } else {
             System.out.printf("%s missed!",this.name);
@@ -104,6 +108,7 @@ public class livingThing {
 public static boolean ccDef; // I will need this to revert defense back to normal after round
                             //everyone will have the same chance for a crit defend.
     public void defend(){
+        this.isDefending = true;
         ccDef = false;
         int critRoll = (int) Math.ceil(Math.random() * (100));
         if(critRoll <= 10){ // 10% crit defend chance? need to test all stats for tuning.
@@ -112,11 +117,16 @@ public static boolean ccDef; // I will need this to revert defense back to norma
             ccDef = true;
         }
 
-        System.out.printf("%s defends, damage reduced by %s%%",this.name);
+        System.out.printf("%s defends, damage reduced by %s%%",this.name, this.def+20);
         this.def += 20;
     }
+    public void resetDefending(){
+        this.isDefending = false;
+        if(this.isCcDef){this.def /= 2;} else{ this.def -= 20;}
+    }
+
     public boolean checkIfDead() {
-        return this.currHP >= 0;
+        return this.currHP <= 0;
 
     }
 
