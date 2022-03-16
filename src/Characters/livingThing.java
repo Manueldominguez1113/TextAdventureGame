@@ -89,14 +89,18 @@ public class livingThing {
         } else {
             System.out.printf("%s missed!",this.name);
         }
-        System.out.println("under attack this should go away after finishing "+die100);
+
     }
 
     public void hit(livingThing target) {
         System.out.printf("\n%s lands a blow!\n", this.name);
         int critRoll = (int) Math.ceil(Math.random() * (100));
         if(critRoll <= this.cc){ // opposite of acc, if you roll from 1-100 under the cc number, you crit. so 25 cc is 25% chance to crit
-            System.out.printf("CRITICAL HIT! %s flavor text %s flavor text ", this.name, target.getName());
+            if(target.getCurrHP()<(target.getMaxHP()/3)) {
+                System.out.printf("CRITICAL HIT! %s's %s cracks into %s's skull for %s!! ", this.name, this.weapon.getName(), target.getName(), this.maxAtk);
+            }else{
+                System.out.printf("CRITICAL HIT! %s's %s drives straight though %s's shoulder! %s took a whooping %s damage!", this.name, this.weapon.getName(), target.getName(), target.getName(), this.maxAtk);
+            }
             target.setCurrHP(target.currHP-this.maxAtk);
         } else{
             System.out.printf("%s hits! %s takes %s points of damage!", this.name, target.getName(), this.atk);

@@ -10,6 +10,7 @@ public class fight {
 
     public fight(Hero player, Enemy enemy) {
         System.out.printf("%s blocks the way!\n", enemy.getName());
+        System.out.println("SMITE! your hp gone for testing");
         choice(player, enemy);
 
     }
@@ -66,17 +67,28 @@ if(player.isDefending){ player.resetDefending();}
             enemy.attack(player);
             if(player.checkIfDead()){
                 System.out.println("You fell.. Game over");
+                gameOver(player, enemy);
             } else{
                 choice(player, enemy);
             }
         }
-        else{enemy.defend();}
-        choice(player, enemy);
+        else{enemy.defend();
+        choice(player, enemy);}
     }
     }
 
     public void run(){
         System.out.println("got away safely...");
+    }
+
+    public void gameOver(Hero player, Enemy killer){
+        System.out.println("you have fallen.. but will you get back up?");
+        System.out.printf("%-5s || %5s ", "continue", "quit");
+        String answer= input.next();
+        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("continue")){
+            player.setCurrHP(player.getMaxHP());
+            new fight(player, killer);
+        }else{System.out.println("your light fades away..");}
     }
 }
 
