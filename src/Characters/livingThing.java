@@ -28,8 +28,8 @@ public class livingThing {
         this.maxHP = 100+(10*this.level);
         this.accuracy = 100;
         this.currHP = this.maxHP;
-        this.maxAtk = atk * 2;
         this.atk = 10+(5*this.level);
+        this.maxAtk = this.atk *2;
         this.def = 0;
         this.cc = 15;
         this.dodge = 5;

@@ -5,6 +5,7 @@ import weapons.weapon;
 public class Enemy extends livingThing{
     public Enemy(String name, String role, int level, weapons.weapon wields) {
         super(name, role, level, wields);
+        this.cc =1;
     }
 
     public void info(){

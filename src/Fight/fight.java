@@ -24,7 +24,7 @@ public class fight {
     public void choice(Hero player, Enemy enemy){
 if(player.isDefending){ player.resetDefending();}
         System.out.println("HP:"+player.currHP+"/"+player.maxHP);
-            System.out.println("what do you want to do? \n1.Fight\n2.Defend\n3.Check\n4.Potion\n5.Run");
+            System.out.printf("\nwhat do you want to do? \n1.Fight\n2.Defend\n3.Check\n4.Potion: %s\n5.Run\n", player.getPotions());
         int inp = input.nextInt();
         switch (inp) {
 
@@ -42,7 +42,7 @@ if(player.isDefending){ player.resetDefending();}
                 break;
             }
             case 4: {
-                player.items();//item
+                player.usePotion();
                 break;
             }
             case 5: {
@@ -90,7 +90,17 @@ if(player.isDefending){ player.resetDefending();}
             new fight(player, killer);
         }else{System.out.println("your light fades away..");}
     }
-}
 
+
+    public void gameOver(Hero player, Boss killer){
+        System.out.println("you have fallen.. but will you get back up?");
+        System.out.printf("%-5s || %5s ", "continue", "quit");
+        String answer= input.next();
+        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("continue")){
+            player.setCurrHP(player.getMaxHP());
+            new fight(player, killer);
+        }else{System.out.println("your light fades away..");}
+    }
+}
 
 
