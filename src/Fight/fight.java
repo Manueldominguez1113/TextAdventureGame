@@ -9,15 +9,16 @@ public class fight {
     static Scanner input = new Scanner(System.in);
 
     public fight(Hero player, Enemy enemy) {
-        System.out.printf("%s blocks the way!\n", enemy.getName());
+        if(enemy.isBoss()){
+            System.out.printf("%s's presence is formidable.. you prepare, this will be a challenge!\n", enemy.getName());
+        } else {
+            System.out.printf("%s blocks the way!\n", enemy.getName());
+        }
         choice(player, enemy);
-
     }
 
     public void choice(Hero player, Enemy enemy) {
-        if (player.isDefending) {
-            player.resetDefending();
-        }
+        endDefend(player);
         hpShow(player);
         int inp = ask(player);
         switch (inp) {
@@ -74,7 +75,7 @@ public class fight {
     }
 
     public int ask(Hero player) {
-        System.out.printf("\nwhat do you want to do? \n1.Fight\n2.Defend\n3.Check\n4.Potion: %s\n5.Run\n", player.getPotions());
+        System.out.printf("\nwhat do you want to do? \n1.Fight\n2.Defend\n3.Check\n4.Potion: %s left\n5.Run\n", player.getPotions());
         return input.nextInt();
     }
 
