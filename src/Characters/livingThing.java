@@ -18,8 +18,6 @@ public class livingThing {
     public boolean isDefending;
     public boolean isCcDef;
 
-
-
     public livingThing(String name, String role, int level, weapon weapon) {
         this.name = name;
         this.level = level;
@@ -72,7 +70,7 @@ public class livingThing {
             this.atk += this.level;
             this.cc += 5;
         }
-        if(role.contains("boss")){ // I want to put the boss stats out of proportion. then give you a "lady in the lake" chance at a god weapon to bring him down with long numbers
+        if(role.contains("boss")){ // I want to put the boss stats out of proportion. then give you a "lady in the lake" chance at a god weapon to bring him down in an epic fight with long numbers
              this.maxHP = 1000000000; // one million hp!
             this.def = 50; // 50% damage reduction!
             this.dodge += 20; //base 25% dodge chance!
@@ -184,6 +182,7 @@ public static boolean ccDef; // I will need this to revert defense back to norma
     public void setAcc(int accuracy) {
         this.accuracy = accuracy;
     }
+
 
 
 }

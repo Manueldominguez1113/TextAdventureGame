@@ -3,9 +3,12 @@ package Characters;
 import weapons.weapon;
 
 public class Enemy extends livingThing{
-    public Enemy(String name, String role, int level, weapons.weapon wields) {
+private boolean isBoss;
+
+    public Enemy(String name, String role, int level, weapons.weapon wields, boolean isBoss) {
         super(name, role, level, wields);
         this.cc =1;
+        this.isBoss = isBoss;
     }
 
     public void info(){
