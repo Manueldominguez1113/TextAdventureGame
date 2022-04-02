@@ -36,9 +36,8 @@ public void start(){
     System.out.printf("\n%60s Press any key to continue...\n", " ");
 
     Controls.pressEnterKey();
-    {
-        System.out.println("this just happened");
-    }
+
+    System.out.println("then theres this");
 }
 }
 
