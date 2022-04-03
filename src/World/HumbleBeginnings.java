@@ -35,7 +35,7 @@ public void titleTwo(){
 public void start(){
     System.out.printf("\n%60s Press any key to continue...\n", " ");
 
-    Controls.pressEnterKey();
+    controls.input();
 
     System.out.println("then theres this");
 }
