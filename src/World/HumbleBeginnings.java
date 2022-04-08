@@ -33,7 +33,7 @@ public void titleTwo(){
 }
 
 public void start(){
-    System.out.printf("\n%60s Press any key to continue...\n", " ");
+    System.out.printf("\n%46s Type in any character, then press enter to continue...\n", " ");
 
     controls.input();
 
