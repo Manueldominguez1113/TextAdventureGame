@@ -37,7 +37,7 @@ public void start(){
 
     controls.input();
 
-    System.out.println("then theres this");
+
 }
 }
 
